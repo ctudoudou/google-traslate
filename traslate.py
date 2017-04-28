@@ -2,6 +2,14 @@
 #https://translate.google.com/translate_a/t?client=t&sl=en&tl=zh-TW&hl=zh-TW&v=1.0&source=is&tk=3479.416175&q=ask&q=asked&q=asking&q=ask%20for&q=ask%20me&q=askew&q=ask%20and%20answer&q=ask%20questions
 #https://translate.google.com/translate_a/t?client=t&sl=en&tl=zh-TW&hl=zh-TW&v=1.0&source=is&tk=717124.836912&q=ask
 # tk 計算 717124.836912
+
+# Python3
+# nodejs
+# 安裝: $sudo apt-get install nodejs
+# PyExecJS
+# 安裝: $pip install PyExecJS
+# 日期：2017年4月28日
+
 import urllib.request as ure
 import execjs
 import sys
@@ -105,4 +113,4 @@ if __name__=="__main__":
                 break
             else:
                 word = input("請輸入要翻譯的語言:")
-                get_result(word, mo=1)
+                get_result(word, mo)
