@@ -4,6 +4,8 @@
 # tk 計算 717124.836912
 import urllib.request as ure
 import execjs
+import sys
+
 
 def get_Tk(a):
     js=execjs.compile("""
@@ -51,7 +53,7 @@ function RL(a, b) {
     a=js.call("VL",str(a))
     return a
 
-def get_result(mo,word):#https://translate.google.com/translate_a/t?client=t&hl=zh-TW&v=1.0&source=is&sl=en&tl=zh-CN&tk=717124.836912&q=ask
+def get_result(word,mo="1"):#https://translate.google.com/translate_a/t?client=t&hl=zh-TW&v=1.0&source=is&sl=en&tl=zh-CN&tk=717124.836912&q=ask
     weburl="https://translate.google.com/translate_a/t?client=t&hl=zh-TW&v=1.0&source=is"
     webheard={
         'Connection': 'Keep-Alive',
@@ -80,9 +82,16 @@ def get_result(mo,word):#https://translate.google.com/translate_a/t?client=t&hl=
 def url_end(word):
     a=ure.quote(word)
     return get_Tk(word) + "&q=" + a
+
+
 if __name__=="__main__":
-    while True:
-        mo = input("""
+    try:
+        tem = sys.argv[1]
+        get_result(tem,"1")
+    except:
+        # print("123")
+        while True:
+            mo = input("""
 請輸入要翻譯的格式所對應的數字：默認是(英->漢(简体))
 1. 英->漢(简体)
 2. 漢(简体)->英
@@ -90,10 +99,10 @@ if __name__=="__main__":
 4. 漢(简体)->漢(繁體)
 5. 退出
 """)
-        if mo not in ["1", "2", "", "3", "4","5"]:
-            print("請確認輸入的數字")
-        elif mo=="5":
-            break
-        else:
-            word = input("請輸入要翻譯的語言:")
-            get_result(mo, word)
+            if mo not in ["1", "2", "", "3", "4", "5"]:
+                print("請確認輸入的數字")
+            elif mo == "5":
+                break
+            else:
+                word = input("請輸入要翻譯的語言:")
+                get_result(word, mo=1)
